@@ -46,12 +46,12 @@ axios.interceptors.response.use(
 )
 
 // app endpoints
-app.get('/', async (req, res) => {
+app.get('/:recordNo', async (req, res) => {
   try {
-    await axios.put(PlayerApi, getRecord(), getAuthHeaders(token))
+    const recordNo = req.params.recordNo
+    await axios.put(PlayerApi, getRecord(recordNo), getAuthHeaders(token))
     res.send('GGWP')
   } catch (err) {
-    console.log(err)
     res.send(err)
   }
 })
