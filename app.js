@@ -11,7 +11,9 @@ const refreshConfig = require('./helpers/headers/headersConstants').refreshConfi
 
 // App config constants
 const app = express()
-const port = process.env.PORT || 4000
+
+// work id: 54bd205b81dd216d79b3c8b4684602eff7fcfbd9
+// home id: TODO
 const PlayerApi = 'https://api.spotify.com/v1/me/player/play?device_id=54bd205b81dd216d79b3c8b4684602eff7fcfbd9'
 const TokenApi = 'https://accounts.spotify.com/api/token'
 
