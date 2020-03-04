@@ -15,7 +15,7 @@ const port = process.env.port || 4000
 
 // work id: 54bd205b81dd216d79b3c8b4684602eff7fcfbd9
 // home id: 828b6067e402df9a0467d98c04d11498fc11b65e
-const PlayerApi = 'https://api.spotify.com/v1/me/player/play?device_id=828b6067e402df9a0467d98c04d11498fc11b65e'
+const PlayerApi = 'https://api.spotify.com/v1/me/player/play?device_id=54bd205b81dd216d79b3c8b4684602eff7fcfbd9'
 const TokenApi = 'https://accounts.spotify.com/api/token'
 
 let token = null

@@ -29,7 +29,7 @@ const records = [
   'spotify:album:33dUoork6zlEyk8gLtCMkV', // sistem -sisTeMpo
   'spotify:album:0Uo3Vv7z4jnFoOkQgrM0k5', // nelly furtado the best of nelly furtado deluxe
   'spotify:album:1mOi6MmZAO0VTaIgTeMNOD', // enigma love sesuality devotion greatest hits
-  'spotify:album:51KdKyc5zBF9x2ZBIeEEe7', // macanache  - interzis
+  'spotify:playlist:37i9dQZF1DZ06evO2CsDNU', // macanache  - this is macanache
   'spotify:album:5vY1MNFjiUXDgDL2ARRCOt', // subcarpati - piele de gaina
   'spotify:album:0v5BqH7RQlIuJIWfQCl1Bp', // disclosure - settle(special edition)
   'spotify:playlist:50xkdX7TndzkDDTCT2nlKT', // club 229 - back to school
