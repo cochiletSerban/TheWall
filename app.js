@@ -58,3 +58,13 @@ app.get('/:recordNo', async (req, res) => {
     res.send(err)
   }
 })
+
+app.post('/', async (req, res) => {
+  try {
+    console.log(req.body)
+    await axios.put(PlayerApi, getRecord(req.body.song), getAuthHeaders(token))
+    res.send('GGWP')
+  } catch (err) {
+    res.send(err)
+  }
+})
