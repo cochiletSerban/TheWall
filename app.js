@@ -15,11 +15,12 @@ const port = process.env.port || 4000
 
 // work id: 54bd205b81dd216d79b3c8b4684602eff7fcfbd9
 // home id: 828b6067e402df9a0467d98c04d11498fc11b65e
-const PlayerApi = 'https://api.spotify.com/v1/me/player/play?device_id=54bd205b81dd216d79b3c8b4684602eff7fcfbd9'
+const playAlbumApi = 'play?device_id=828b6067e402df9a0467d98c04d11498fc11b65e'
+const baseApi = 'https://api.spotify.com/v1/me/player/'
 const TokenApi = 'https://accounts.spotify.com/api/token'
 
 let token = null
-
+let shuffle = false
 // App config
 app.use(cors())
 app.use(express.json())
@@ -51,8 +52,12 @@ axios.interceptors.response.use(
 // app endpoints
 app.get('/:recordNo', async (req, res) => {
   try {
-    const recordNo = req.params.recordNo
-    await axios.put(PlayerApi, getRecord(recordNo), getAuthHeaders(token))
+    const recordNo = parseInt(req.params.recordNo)
+    if (recordNo <= 60) {
+      await axios.put(baseApi + playAlbumApi, getRecord(recordNo), getAuthHeaders(token))
+    } else {
+      await executeCmd(recordNo)
+    }
     res.send('GGWP')
   } catch (err) {
     res.send(err)
@@ -61,10 +66,29 @@ app.get('/:recordNo', async (req, res) => {
 
 app.post('/', async (req, res) => {
   try {
-    console.log(req.body)
-    await axios.put(PlayerApi, getRecord(req.body.song), getAuthHeaders(token))
+    const recordNo = parseInt(req.body.song)
+    if (recordNo <= 60) {
+      await axios.put(baseApi + playAlbumApi, getRecord(recordNo), getAuthHeaders(token))
+    } else {
+      await executeCmd(recordNo)
+    }
     res.send('GGWP')
   } catch (err) {
     res.send(err)
   }
 })
+
+async function executeCmd (cmdId) {
+  switch (cmdId) {
+    case 61:
+      shuffle = !shuffle
+      await axios.put(baseApi + `shuffle?state=${shuffle}`, getAuthHeaders(token))
+      break
+    case 62:
+      await axios.post(baseApi + 'next', getAuthHeaders(token))
+      break
+    case 63:
+      await axios.post(baseApi + 'previous', getAuthHeaders(token))
+      break
+  }
+}
